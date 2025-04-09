@@ -1,0 +1,7 @@
+{
+  "name": "TLOVConfluxConvergence",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
