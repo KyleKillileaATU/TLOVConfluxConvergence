@@ -1,20 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      TLOV The Conflux Convergence
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Viewport" content="width=device-width, initial-scale=1.0">
+    <title>TLOV The Conflux Convergence</title>
+    <link href="Universe.css" rel = "stylesheet">
+    
+</head>
+
+<body>
+
+    <span  class="backgroundfade">
+
+    </span>
+    <div class="bgAnimation" id="bgAnimation">
+        <div class="backgroundAnim">
+
+        </div>
+    </div>
+    <div class= "homepagebasic">
+        <nav>
+            <h1>
+                <span>
+                    Terra
+                </span>
+                .Co
+            </h1>
+            <ul>
+                
+                <li>
+                  <p>Options</p>
+                </li>
+                <li>
+                  <p>Webstore</p>
+                </li>
+                <li>
+                  <ion-button (click)="getLocation()">
+                    {{latitude}}, {{longitude}}
+                  </ion-button>
+                </li>
+            </ul>
+        </nav>
+        <section>
+            <div class="HomescreenTextbox">
+                <h1>
+                    <span>
+                        Conflux Convergence
+                       
+                    </span>
+                </h1>
+                <p class="Sizeone">By Kyle Killilea</p>
+                       <p class="Sizethree">all rights reserved</p>
+                       <a><button class="Start" id="Begin" style="--i: #00bfff;" [routerLink]="['/game']" (click)="onButtonClick"(click)="getLocation()">Enter</button></a>
+            </div>
+        </section>
+    </div>
+    
+    <script src="backend.js">
+        const div = document.getElementById('canvasOne');
+        const ctx = div.getContext('2d')
+
+        class menu {
+            constructor(Position){
+                this.Position = Position
+
+            }
+            draw(){
+                ctx.fillStyle = 'green'
+                ctx.fillRect(this.Position.X,this.Position.Y,40,40)
+            }   
+        }
+        const Menu =new menu({
+            Position: {
+            X: 0,
+            Y: 0,
+        },
+        })
+        function Settings(){
+
+            Menu.draw()
+        }
+    </script>
+
+</body>
+
 </ion-content>
