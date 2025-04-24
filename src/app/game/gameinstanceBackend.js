@@ -1,4 +1,4 @@
-const canvas = document.getElementById('canvasOne');
+const canvas = document.getElementById('canvasOne'); // set up for canvas, etc
 const ctx = canvas.getContext('2d')
 const CANVAS_WIDTH =canvas.width = 1024;
 const CANVAS_HEIGHT =canvas.height=576;
@@ -8,8 +8,10 @@ const scaledcanvas = {
     height: canvas.height /4
 }
 
-let placed = false;
+// couldn't get it to load in sadly
 
+let placed = false;
+// main js code
 class Sprite { // sprite generate class for pin
     constructor({Position, imageSrc}) {
         this.Position = Position
@@ -51,6 +53,14 @@ class Player { // for the player osition on the canvas
 
 }
 
+// object loads
+const player =new Player({ // player load
+    Position:{
+    Xposition: 64,
+    Yposition: 480,
+    },
+   
+})
 const psprite = new Sprite({ // create sprite object
     Position: {
         Xposition: player.Position.Xposition,
@@ -76,5 +86,5 @@ function animate(){ // main canvas animator
 
     if(this.captureon >= 0){
         
-    }
+    } 
 }

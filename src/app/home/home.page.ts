@@ -39,12 +39,14 @@ export class HomePage {
     this.latitude = await this.storage.get('latitude');
     }
     async onButtonClick(){// async to have it on it's own thread 
-      this.router.navigate(['/app/game']);
+      
 
       console.log(this.latitude);
+      console.log(this.longitude);
       await this.storage.create();
       await this.storage.set('status', this.latitude);
-      this.router.navigate(['/home']);
+      await this.storage.set('status', this.longitude);
+      //this.router.navigate(['/home']);
       
     }
       
