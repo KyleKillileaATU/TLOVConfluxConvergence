@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">  
-
+<!-- removed the headerthing  -->
 <ion-content [fullscreen]="true">
   <html>
 <head>
@@ -9,16 +9,32 @@
     <meta name="Viewport" content="width=device-width, initial-scale=1.0">
     <title>TLOV Conflux Convergence</title>
     <link href="gameinstanceStyle.css" rel = "stylesheet">
+    
 </head>
 <body class="behindpage">
-    
-    <canvas id="canvasOne" class="canvasback">
-    <!-- <capacitor-google-map id="map"></capacitor-google-map> -->
-     
-    </canvas>
-    <div>
-      <a href="https://kyle.webteic.net/"><h1>Battle</h1></a>
-     </div>
+  
+  <section >
+      <div>
+        <canvas id="canvasOne" class="canvasback"> <!-- map in boxed area-->
+         <!--  <capacitor-google-map #map ></capacitor-google-map>--><!--  unfortunately, could not get the capacitor googlemap to work-->
+
+          </canvas>
+          <div class="imagepage">
+            <img src= "https://d-maps.com/m/europa/irland/galway/galway53.gif" >
+          </div> <!-- using image of a map as replacement-->
+      </div>
+      <ul class="gamepage">
+        <a href="https://kyle.webteic.net/">
+          <h1 class="battlebutton">Capture</h1>
+        </a><!-- goes right to personal server -->
+      </ul>
+      <ul class="menupage">
+        <a id="menuclicked">
+          <h1 class="menubutton" [routerLink]="['/menu']" >Menu</h1>
+        </a><!-- opens menu -->
+      </ul>
+      
+  </section>  
     <script src="gameinstanceBackend.js"></script>   
 </body>
 </html>

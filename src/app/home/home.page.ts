@@ -5,6 +5,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons,
 import { RouterLink } from '@angular/router'; // internal routing
 import { Router } from '@angular/router';
 import { Geolocation } from '@capacitor/geolocation';
+import { Storage } from '@ionic/storage-angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -17,17 +18,14 @@ export class HomePage {
   latitude:number=0;
   longitude:number=0;
 
-  constructor(private router:Router) {
+  constructor(private storage:Storage, private router:Router) {
 
   }
   ngOnInit() {
 
   }
-  async onButtonClick(){// async to have it on it's own thread 
-    
-    this.router.navigate(['/app/game']);
-
-  }
+  
+  
   async getLocation(){
     console.log("Getting location");
     this.location = await Geolocation.getCurrentPosition();
@@ -35,5 +33,20 @@ export class HomePage {
     this.longitude = this.location.coords.longitude;
     console.log(this.latitude," + ",this.longitude);
   }
+  async ionViewWillEnter(){
+    console.log("ionviewWillEnter");
+    await this.storage.create();
+    this.latitude = await this.storage.get('latitude');
+    }
+    async onButtonClick(){// async to have it on it's own thread 
+      this.router.navigate(['/app/game']);
+
+      console.log(this.latitude);
+      await this.storage.create();
+      await this.storage.set('status', this.latitude);
+      this.router.navigate(['/home']);
+      
+    }
+      
 
 }

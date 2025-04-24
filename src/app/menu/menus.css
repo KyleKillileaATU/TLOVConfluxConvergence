@@ -4,7 +4,7 @@
 .canvasback{
 
     position:fixed;
-    background: rgb(255, 255, 255, 0.1);
+    background: white;
     
     top: 40%;
     left: 50%;
@@ -21,16 +21,6 @@
     transform: translate(-50%, -50%);
     width: 50%;
     height: 50%;
-}
-.imagepage{
-
-    position:absolute;
-  
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 85%;
-    height: 65%;
 }
 .menupage{
 
@@ -142,10 +132,10 @@ a {
     font-family: sans-serif;
     text-align: center;
     font-size: 300%;
-    top: 50%;
+    top: -50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 20%;
+    width: 100%;
     height: 40%;
 }
 .lowbar{
@@ -202,10 +192,10 @@ a {
     .screensectionalizedsection{
         background-color: rgba(7, 148, 158, 0.76);
         position: absolute;
-        top: 33%;
+        top: 75%;
         left: 35%;
         transform: translate(-50%, -50%);
-        width: 25%;
+        width: 60%;
         height: 50%;
         border-radius: 9px;
     }
@@ -221,6 +211,27 @@ a {
         width: 25%;
         height: 50%;
     }
+.screensectionlow{
+    position: relative;
+    list-style: none;
+    border: none rgb(0, 0, 0);
+    
+    font-family: sans-serif;
+    text-align: center;
+    top: 40%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    height: 50%;
+}
+.screensectionhigh{
+    position: absolute;
+    top: 90%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    height: 50%;
+}
 .sidebarleft{
     border: solid rgb(0, 0, 0);
 
@@ -243,10 +254,10 @@ a {
     background-color: rgba(7, 148, 158, 0.76);
     position: absolute;
     top: 50%;
-    left: 70%;
+    left: 35%;
     transform: translate(-50%, -50%);
     width: 400px;
-    height: 400px;
+    height: 406px;
 }
 
 
@@ -260,6 +271,9 @@ a {
 
 
 .buttonst{
+    position:relative;
+    top: 60%;
+    left: -4%;
     font-family: sans-serif;
     padding: 6px 14px;
     margin: 16px 12px;
@@ -273,6 +287,34 @@ a {
     pointer-events: all;
     transition: .3s;
     font-weight: 600;
+}
+.buttonleave{
+    font-family: sans-serif;
+    padding: 6px 14px;
+    margin: 16px 12px;
+    font-size: 26px;
+    background-color: transparent;
+    color: black;
+    outline: none;
+    border: 3px solid var(--i);
+    border-radius: 4px;
+    cursor: pointer;
+    pointer-events: all;
+    transition: .3s;
+    font-weight: 600;
+}
+a:hover {
+    color:chartreuse; 
+    text-decoration:none; 
+    position: relative;
+    list-style: none;
+    
+    font-weight: 400;
+
+    cursor: pointer;
+    pointer-events: all;
+    transition: .4s;
+    overflow: hidden;
 }
 .textboxplaceholder{
     border: solid rgb(0, 0, 0);
