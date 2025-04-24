@@ -259,7 +259,16 @@ a {
     width: 400px;
     height: 406px;
 }
-
+.imageareaoptions1{
+    position: fixed;
+    border: solid 2px rgba(7, 148, 158, 0.76);
+    border-radius: 10px;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+}
 
     @-webkit-keyframes slide2 {
     100% { left: 16%; }

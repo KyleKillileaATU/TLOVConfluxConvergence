@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { RouterLink } from '@angular/router'; // internal routing
 import { Storage } from '@ionic/storage-angular';
+import { Geolocation } from '@capacitor/geolocation';
 //import { GoogleMap } from '@capacitor/google-maps'
 //import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -22,13 +23,26 @@ export class GamePage implements OnInit {
   //@viewChild('map')mapref: ElementRef;
   //map!: GoogleMap;
   
+  locationbase:any = "";
+  latitudebase:number=0;
+  longitudebase:number=0;
+
   location:any = "";
   lati:number=0;
   longi:number=0;
   locationhtmlman:any="";
   constructor(private storage:Storage) {}
 
+  async getLocation(){
+    console.log("Getting location");
+    this.locationbase = await Geolocation.getCurrentPosition();
+    this.latitudebase = this.location.coords.latitude;
+    this.longitudebase = this.location.coords.longitude;
+    console.log(this.latitudebase," + ",this.longitudebase);
+  }
+
   ngOnInit() {
+    this.getLocation();
   }
   async ionViewWillEnter(){
     console.log("ionviewWillEnter");
