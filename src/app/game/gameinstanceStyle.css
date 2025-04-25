@@ -141,6 +141,15 @@ a {
     font-size: 60%;
     color:blueviolet;
 }
+.centrestage{
+    position:absolute;
+    
+    top: 50%;
+    left: 150%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+}
 .battlebutton{
 
     font-family: sans-serif;

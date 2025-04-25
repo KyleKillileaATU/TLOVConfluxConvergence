@@ -5,6 +5,12 @@ import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/stan
 import { RouterLink } from '@angular/router'; // internal routing
 import { Storage } from '@ionic/storage-angular';
 import { Geolocation } from '@capacitor/geolocation';
+import { ElementRef, ViewChildren } from '@angular/core';
+import { IonButton, IonCard, IonCardContent } from '@ionic/angular/standalone';
+import type { QueryList } from '@angular/core';
+import type { Animation } from '@ionic/angular/standalone';
+import { AnimationController } from '@ionic/angular/standalone';
+//import { createAnimation } from 'https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/esm/index.mjs';
 
 //import * as fs from 'fs';
 //import * as path from 'path';
@@ -18,11 +24,16 @@ import { Geolocation } from '@capacitor/geolocation';
   templateUrl: './game.page.html',
   styleUrls: ['./game.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,RouterLink],
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,RouterLink,IonButton, IonCard, IonCardContent],
   //schemas: [CUSTOM_ELEMENTS_SCHEMA] 
 })
 
 export class GamePage implements OnInit {
+
+  @ViewChildren(IonCard, { read: ElementRef }) cardElements!: QueryList<ElementRef<HTMLIonCardElement>>;
+
+  private animation!: Animation;
+  
   //mapref:any;
   //@viewChild('map')mapref: ElementRef;
   //map!: GoogleMap;
@@ -30,7 +41,7 @@ export class GamePage implements OnInit {
   //private fs = require('fs');
   
   // universal variables
-  counter:number = 90;
+  counter:number = 90;counter2:number = 46;
   spawncount:number = 0;
   spawncounter:number = 0;
   location:any = "";
@@ -43,11 +54,167 @@ export class GamePage implements OnInit {
   positionrandom:number=0;spawntype:number=0;
   position:string="";position1:string="";position2:string="";position3:string="";position4:string="";position5:string="";
   spawned1:number=0;spawned2:number=0;spawned3:number=0;spawned4:number=0;spawned5:number=0;spawnconfirm:number=0;
-  
+  intervalId:any;
 
-  constructor(private storage:Storage) {} // callings
   
+  constructor(private storage:Storage,private animationCtrl: AnimationController) {} // callings
+  
+  private cardA!: Animation | null;
+  private cardB!: Animation | null;
+  private cardC!: Animation | null;
+  private cardD!: Animation | null;
+  private cardE!: Animation | null;
+  private cardA1!: Animation | null;
+  private cardB1!: Animation | null;
+  private cardC1!: Animation | null;
+  private cardD1!: Animation | null;
+  private cardE1!: Animation | null;
+
   // main code
+  
+  ngAfterViewInit() {
+    const cardElA = this.cardElements.get(0);
+    const cardElB = this.cardElements.get(1);
+    const cardElC = this.cardElements.get(2);
+    const cardElD = this.cardElements.get(3);
+    const cardElE = this.cardElements.get(4);
+    const cardElA1 = this.cardElements.get(0);
+    const cardElB1 = this.cardElements.get(1);
+    const cardElC1 = this.cardElements.get(2);
+    const cardElD1 = this.cardElements.get(3);
+    const cardElE1 = this.cardElements.get(4);
+
+    // start
+    this.cardA1 = cardElA1
+    ? this.animationCtrl
+        .create()
+        .addElement(cardElA1.nativeElement)
+        .fill('none')
+        .duration(250)
+        .keyframes([
+        { offset: 0, transform: 'scale(1)', opacity: '1' },
+        { offset: 1, transform: 'scale(0.25)', opacity: '0' },
+      ]): null;
+
+      // split 
+      this.cardB1 = cardElB1
+      ? this.animationCtrl
+          .create()
+          .addElement(cardElB1.nativeElement)
+          .fill('none')
+          .duration(250)
+        .keyframes([
+        { offset: 0, transform: 'scale(1)', opacity: '1' },
+        { offset: 1, transform: 'scale(0.25)', opacity: '0' },
+        
+      ]): null;
+      
+      // split 
+      this.cardC1 = cardElC1
+      ? this.animationCtrl
+          .create()
+          .addElement(cardElC1.nativeElement)
+          .fill('none')
+          .duration(250)
+          
+        .keyframes([
+        { offset: 0, transform: 'scale(1)', opacity: '1' },
+        { offset: 1, transform: 'scale(0.25)', opacity: '0' },
+      ]): null;
+      // split 
+      this.cardD1 = cardElD1
+    ? this.animationCtrl
+        .create()
+        .addElement(cardElD1.nativeElement)
+        .fill('none')
+        .duration(250)
+        .keyframes([
+        { offset: 0, transform: 'scale(1)', opacity: '1' },
+        { offset: 1, transform: 'scale(0.25)', opacity: '0' },
+      ]): null;
+      // split 
+      this.cardE1 = cardElE1
+    ? this.animationCtrl
+        .create()
+        .addElement(cardElE1.nativeElement)
+        .fill('none')
+        .duration(250)
+        .keyframes([
+        { offset: 0, transform: 'scale(1)', opacity: '1' },
+        { offset: 1, transform: 'scale(0.25)', opacity: '0' },
+      ]): null;
+
+      //this.setupan();
+    //active
+    this.cardA = cardElA
+    ? this.animationCtrl
+        .create()
+        .addElement(cardElA.nativeElement)
+        .fill('none')
+        .duration(4200)
+        .keyframes([
+        { offset: 0, transform: 'scale(0.25)', opacity: '0', left: '-270%'  },
+        { offset: 0.25, transform: 'scale(1)', opacity: '1', left: '-270%'  },
+        { offset: 0.7, transform: 'scale(3)', opacity: '0.3', left: '-270%'  },
+        { offset: 1, transform: 'scale(2)', opacity: '0', left: '-270%'  },
+      ]): null;
+
+      // split 
+      this.cardB = cardElB
+      ? this.animationCtrl
+          .create()
+          .addElement(cardElB.nativeElement)
+          .fill('none')
+          .duration(4200)
+          .keyframes([
+            { offset: 0, transform: 'scale(0.25)', opacity: '0', left: '-270%'  },
+            { offset: 0.25, transform: 'scale(1)', opacity: '1', left: '-270%'  },
+            { offset: 0.7, transform: 'scale(3)', opacity: '0.3', left: '-270%'  },
+            { offset: 1, transform: 'scale(2)', opacity: '0', left: '-270%'  },
+        ]): null;
+      // split 
+      this.cardC = cardElC
+      ? this.animationCtrl
+          .create()
+          .addElement(cardElC.nativeElement)
+          .fill('none')
+          .duration(4200)
+          .keyframes([
+            { offset: 0, transform: 'scale(0.25)', opacity: '0', left: '-270%'  },
+            { offset: 0.25, transform: 'scale(1)', opacity: '1', left: '-270%'  },
+            { offset: 0.7, transform: 'scale(3)', opacity: '0.3', left: '-270%'  },
+            { offset: 1, transform: 'scale(2)', opacity: '0', left: '-270%'  },
+        ]): null;
+      // split 
+      this.cardD = cardElD
+    ? this.animationCtrl
+        .create()
+        .addElement(cardElD.nativeElement)
+        .fill('none')
+        .duration(4200)
+        .keyframes([
+          { offset: 0, transform: 'scale(0.25)', opacity: '0', left: '-270%'  },
+          { offset: 0.25, transform: 'scale(1)', opacity: '1', left: '-270%'  },
+          { offset: 0.7, transform: 'scale(3)', opacity: '0.3', left: '-270%'  },
+          { offset: 1, transform: 'scale(2)', opacity: '0', left: '-270%'  },
+      ]): null;
+      // split 
+      this.cardE = cardElE
+    ? this.animationCtrl
+        .create()
+        .addElement(cardElE.nativeElement)
+        .fill('none')
+        .duration(4200)
+        .keyframes([
+          { offset: 0, transform: 'scale(0.25)', opacity: '0', left: '-270%'  },
+          { offset: 0.25, transform: 'scale(1)', opacity: '1', left: '-270%'  },
+          { offset: 0.7, transform: 'scale(3)', opacity: '0.3', left: '-270%'  },
+          { offset: 1, transform: 'scale(2)', opacity: '0', left: '-270%'  },
+      ]): null;
+      
+      this.testanall();
+    }// end of
+    
   async getLocation(){
     console.log("Getting location");
     this.location = await Geolocation.getCurrentPosition();
@@ -74,7 +241,7 @@ export class GamePage implements OnInit {
   
   ngOnInit() {
     this.getLocation();
-    this.pinpointl();
+    
     this.spawnTimer();
     
   }
@@ -84,10 +251,7 @@ export class GamePage implements OnInit {
     //this.lati = await this.storage.get('latitude');
     }
 
-  async pinpointl(){
-    console.log(" pin ");
-  // spawn c
-  }
+  
   async creature1(){
     this.position1 = await this.creaturecreate();
   }
@@ -104,20 +268,45 @@ export class GamePage implements OnInit {
     this.position5 = await this.creaturecreate();
   }
   // cap c
+  async testanall(){
+    await this.cardA?.play();
+    await this.cardB?.play();
+    await this.cardC?.play();
+    await this.cardD?.play();
+    await this.cardE?.play();
+  }
+  async setupan(){
+    await this.cardA1?.play();
+    console.log(" 1 ");
+    await this.cardB1?.play();
+    console.log(" 2 ");
+    await this.cardC1?.play();
+    console.log(" 3 ");
+    await this.cardD1?.play();
+    console.log(" 4 ");
+    await this.cardE1?.play();
+    console.log(" completed ");
+  }
   async creature1cap(){
     this.creature1des();
+    await this.cardA?.play();
+
   }
   async creature2cap(){
     this.creature2des();
+    await this.cardB?.play();
   }
   async creature3cap(){
     this.creature3des();
+    await this.cardC?.play();
   }
   async creature4cap(){
     this.creature4des();
+    await this.cardD?.play();
   }
   async creature5cap(){
     this.creature5des();
+    await this.cardE?.play();
   }
   // remove c
   async creature1des(){
@@ -147,10 +336,15 @@ export class GamePage implements OnInit {
   }
   async creaturealldes(){  // despawntimer clear
     this.position1 = "";
+    this.spawned1 = 0;
     this.position2 = "";
+    this.spawned2 = 0;
     this.position3 = "";
+    this.spawned3 = 0;
     this.position4 = "";
+    this.spawned4 = 0;
     this.position5 = "";
+    this.spawned5 = 0;
     console.log("Despawned all")
   }
   // c c
@@ -182,9 +376,11 @@ export class GamePage implements OnInit {
     this.location = await this.getLocation();
     console.log(" capturing1... "+ this.location);
     this.spawntype = await this.spawnTimer();
+    clearInterval(this.intervalId);
     console.log(" capturing2... "+ this.spawncounter);
     console.log(" rnd position "+this.positionlati +", "+this.positionlong);
-
+    
+    
     if (this.spawntype != 0) {
       switch (this.spawntype){ // capturing
         case 1: {
@@ -220,9 +416,9 @@ export class GamePage implements OnInit {
   async spawnTimer() { // used to time spawns (( might duplicate ))
      {
   
-        let intervalId = setInterval(async () => {
+        this.intervalId = setInterval(async () => {
             this.counter = this.counter - 1;
-            //console.log("spa timer is: " + this.counter)
+            console.log("spa timer is: " + this.counter)
             if(this.counter == 1){ // when timer ends
               this.counter = 90;
               this.spawncount++;
@@ -310,7 +506,7 @@ export class GamePage implements OnInit {
             if (this.spawncount >= 1 && this.spawncount < 5){
               //console.log("Amount of creatures is: "+ this.spawncount)
             }
-            if(this.counter === 0) clearInterval(intervalId)
+            if(this.counter === 0) clearInterval(this.intervalId)
             }, 1000)
         
     }
@@ -319,12 +515,12 @@ export class GamePage implements OnInit {
   }
   async despawnTimer() { // used to time de-spawns (( might duplicate ))
     {
-       let counter2 = 47;
+       
        let intervalId2 = setInterval(() => {
-           counter2 = counter2 - 1;
-           console.log("des timer is: " + counter2)
-           if(counter2 == 0){ // when timer ends
-             //counter2 = 47;
+        this.counter2 = this.counter2 - 1;
+           console.log("des timer is: " + this.counter2)
+           if(this.counter2 == 0){ // when timer ends
+             
              this.spawncount--;
              console.log("despawning creature: " + this.spawntype)
              this.creaturealldes();
@@ -333,9 +529,9 @@ export class GamePage implements OnInit {
            if (this.spawncount >= 1 && this.spawncount < 5){
              console.log("Amount of creatures is: "+ this.spawncount)
            }
-           if(this.counter === 0) clearInterval(intervalId2)
+           if(this.counter2 === 0) clearInterval(intervalId2)
            }, 1000)
-       
+           this.counter2 = 47;
    }
  }
     //showFile() {
