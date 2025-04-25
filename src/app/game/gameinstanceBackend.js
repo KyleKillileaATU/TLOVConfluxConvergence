@@ -88,3 +88,8 @@ function animate(){ // main canvas animator
         
     } 
 }
+function captureclicked(eleme, colour){  
+let element = document.getElementById(eleme);
+    element.style.background = "background 3.5s linear 2s";
+    element.style.background = colour;
+}
