@@ -54,7 +54,7 @@ export class GamePage implements OnInit {
   positionrandom:number=0;spawntype:number=0;
   position:string="";position1:string="";position2:string="";position3:string="";position4:string="";position5:string="";
   spawned1:number=0;spawned2:number=0;spawned3:number=0;spawned4:number=0;spawned5:number=0;spawnconfirm:number=0;
-  intervalId:any;
+  intervalId:any;collectedc:number=0;
 
   
   constructor(private storage:Storage,private animationCtrl: AnimationController) {} // callings
@@ -212,7 +212,7 @@ export class GamePage implements OnInit {
           { offset: 1, transform: 'scale(2)', opacity: '0', left: '-270%'  },
       ]): null;
       
-      this.testanall();
+      //this.testanall();
     }// end of
     
   async getLocation(){
@@ -290,23 +290,27 @@ export class GamePage implements OnInit {
   async creature1cap(){
     this.creature1des();
     await this.cardA?.play();
-
+    this.collectedc++;
   }
   async creature2cap(){
     this.creature2des();
     await this.cardB?.play();
+    this.collectedc++;
   }
   async creature3cap(){
     this.creature3des();
     await this.cardC?.play();
+    this.collectedc++;
   }
   async creature4cap(){
     this.creature4des();
     await this.cardD?.play();
+    this.collectedc++;
   }
   async creature5cap(){
     this.creature5des();
     await this.cardE?.play();
+    this.collectedc++;
   }
   // remove c
   async creature1des(){

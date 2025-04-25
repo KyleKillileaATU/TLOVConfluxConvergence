@@ -269,7 +269,17 @@ a {
     width: 200px;
     height: 200px;
 }
-
+.imageareaoptions3{
+    position: fixed;
+    border-radius: 10px;
+    top: 41%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    color:brown;
+    
+}
     @-webkit-keyframes slide2 {
     100% { left: 16%; }
     }
@@ -350,4 +360,16 @@ a:hover {
     font-size: 300%;
     text-align: center;
     
+}
+.goalpage{
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: 19%;
+    text-align: center;
+    color: red;
+    background-color: rgba(0, 119, 255, 0.418);
+    border-radius: 30px;
 }
